@@ -1,6 +1,9 @@
 package com.sucho.playground
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class BaseApplication: Application() {
+@HiltAndroidApp
+class BaseApplication : Application() {
+
 }

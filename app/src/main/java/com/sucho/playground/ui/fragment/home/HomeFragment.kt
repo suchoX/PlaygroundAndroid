@@ -10,7 +10,9 @@ import com.sucho.playground.databinding.FragmentHomeBinding
 import com.sucho.playground.ui.activity.main.MainActivity
 import com.sucho.playground.ui.activity.main.MainViewModel
 import com.sucho.playground.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment: BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, MainViewModel>() {
 
   private var fragmentView: View? = null
