@@ -20,7 +20,6 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel, AVM : ViewModel
   lateinit var viewModel: VM
   lateinit var activityViewModel: AVM
   protected var mainActivity: MainActivity? = null
-  var viewModelFactory= ViewModelProvider.NewInstanceFactory()
 
   override fun onAttach(context: Context) {
     if (activity is MainActivity) mainActivity = activity as MainActivity
@@ -38,9 +37,9 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel, AVM : ViewModel
   }
 
   private fun bindContentView() {
-    viewModel = ViewModelProvider(this, viewModelFactory)
+    viewModel = ViewModelProvider(this)
         .get(getViewModelClass())
-    activityViewModel = ViewModelProvider(getActivityViewModelOwner(), viewModelFactory)
+    activityViewModel = ViewModelProvider(getActivityViewModelOwner())
         .get(getActivityViewModelClass())
     binding.setVariable(BR.viewModel, viewModel)
   }
