@@ -1,7 +1,7 @@
 package com.sucho.playground.injection
 
 import com.sucho.data.datasource.TestDataSource
-import com.sucho.playground.repository.TestDataSourceImpl
+import com.sucho.playground.datasource.TestDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

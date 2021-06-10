@@ -1,4 +1,4 @@
-package com.sucho.playground.repository
+package com.sucho.playground.datasource
 
 import com.sucho.data.datasource.TestDataSource
 import com.sucho.domain.responemodels.TestResponse
