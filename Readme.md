@@ -6,10 +6,15 @@ Everytime a new feature is released or I wanted to experiement with something, I
 
 ## Features as of now
 
-- 100% Kotlin
+### Architecture
 - Clean Architecture
-- Single Activity with Navigation
+- Single Activity with AndroidX Navigation
 - Hilt for Dependency Injection
-- AndroidX with KTX
+- 
+
+### Design
+- Dark Mode with MaterialComponents.DayNight
+- ConstraintLayout
+- Downloadable Fonts
 
 This app will evolve with time, but will never be a specific feature driven. It will be a mixture of features that makes no sense with together (Imagine Notes app with Cat pictures and Chuck Norris Jokes) but will showcase the Android features

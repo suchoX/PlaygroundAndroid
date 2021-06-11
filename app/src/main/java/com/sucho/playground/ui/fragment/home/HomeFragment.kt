@@ -48,19 +48,14 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Mai
   }
 
   private fun initListeners() {
-    binding.button.setOnClickListener {
-      viewModel.loadTestData()
-    }
   }
 
   private fun initObservers() {
     viewModel.viewState.observe(viewLifecycleOwner, Observer { state ->
       when(state) {
         is Loading -> {
-          binding.textView.text = "Loading"
         }
         is ShowData -> {
-          binding.textView.text = state.testData.str
         }
         else -> {
 
