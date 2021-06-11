@@ -1,9 +1,12 @@
 package com.sucho.playground.ui.fragment.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.sucho.data.remote.SafeResult
+import com.sucho.data.usecase.GetKanyeQuoteUseCase
 import com.sucho.data.usecase.GetTestDataUseCase
 import com.sucho.domain.model.TestModel
 import com.sucho.playground.ui.base.BaseViewModel
@@ -14,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
   private val savedStateHandle: SavedStateHandle,
-  private val testDataUseCase: GetTestDataUseCase
+  private val testDataUseCase: GetTestDataUseCase,
+  private val kanyeQuoteUseCase: GetKanyeQuoteUseCase
 ): BaseViewModel() {
   private var _viewState: MutableLiveData<HomeViewState> = MutableLiveData()
   val viewState: LiveData<HomeViewState> = _viewState
