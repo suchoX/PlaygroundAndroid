@@ -1,7 +1,6 @@
 package com.sucho.playground.ui.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +11,10 @@ import com.sucho.playground.databinding.FragmentHomeBinding
 import com.sucho.playground.ui.activity.main.MainActivity
 import com.sucho.playground.ui.activity.main.MainViewModel
 import com.sucho.playground.ui.base.BaseFragment
-import com.sucho.playground.ui.fragment.home.HomeViewState.Loading
-import com.sucho.playground.ui.fragment.home.HomeViewState.ShowData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment: BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, MainViewModel>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, MainViewModel>() {
 
   private var fragmentView: View? = null
 
@@ -52,15 +49,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Mai
 
   private fun initObservers() {
     viewModel.viewState.observe(viewLifecycleOwner, Observer { state ->
-      when(state) {
-        is Loading -> {
-        }
-        is ShowData -> {
-        }
-        else -> {
 
-        }
-      }
     })
   }
 

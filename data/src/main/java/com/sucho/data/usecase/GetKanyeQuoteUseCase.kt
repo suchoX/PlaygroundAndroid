@@ -5,10 +5,8 @@ import com.sucho.data.remote.SafeResult.Failure
 import com.sucho.data.remote.SafeResult.NetworkError
 import com.sucho.data.remote.SafeResult.Success
 import com.sucho.data.repository.KanyeQuotesRepo
-import com.sucho.data.repository.TestRepo
 import com.sucho.domain.mappers.toKanyeQuote
 import com.sucho.domain.model.KanyeQuote
-import com.sucho.domain.model.TestModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
