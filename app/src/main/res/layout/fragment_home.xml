@@ -18,13 +18,55 @@
       >
 
     <ImageView
+        android:id="@+id/heading_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_logo"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo"
         />
+    <TextView
+        android:id="@+id/quotes_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/rubik_bold"
+        android:gravity="end"
+        android:text="@string/quotes_heading"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@id/quotes_scroll_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heading_image"
+        />
+
+    <HorizontalScrollView
+        android:id="@+id/quotes_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quotes_heading"
+        android:layout_marginTop="24dp"
+        >
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          >
+        <com.sucho.playground.ui.view.QuoteView
+            android:id="@+id/kanye_quote_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingLeft="16dp"
+            />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

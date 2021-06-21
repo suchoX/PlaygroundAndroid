@@ -1,12 +1,12 @@
 package com.sucho.playground.ui.fragment.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.sucho.data.remote.SafeResult.Success
 import com.sucho.data.usecase.GetKanyeQuoteUseCase
+import com.sucho.domain.model.KanyeQuote
 import com.sucho.playground.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -24,9 +24,9 @@ class HomeFragmentViewModel @Inject constructor(
   fun fetchKanyeQuotesPeriodically() {
     viewModelScope.launch {
       kanyeQuoteUseCase.perform().collect { result ->
-        when(result) {
+        when (result) {
           is Success -> {
-            Log.e("DDDD", result.data.quote)
+            _viewState.value = HomeViewState.SetKanyeQuote(result.data)
           }
         }
       }
@@ -37,4 +37,5 @@ class HomeFragmentViewModel @Inject constructor(
 sealed class HomeViewState {
   object Loading : HomeViewState()
   class Error(val message: String) : HomeViewState()
+  class SetKanyeQuote(val kanyeQuote: KanyeQuote) : HomeViewState()
 }

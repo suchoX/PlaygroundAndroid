@@ -24,7 +24,7 @@ class KanyeQuoteDataSourceImpl @Inject constructor(
           kanyeQuoteApiService.getFiveRandomJokes()
         }
         emit(result)
-        delay(3000)
+        delay(6000)
       }
     }
 }

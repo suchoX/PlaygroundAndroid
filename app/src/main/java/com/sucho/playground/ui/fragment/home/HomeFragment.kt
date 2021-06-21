@@ -11,6 +11,7 @@ import com.sucho.playground.databinding.FragmentHomeBinding
 import com.sucho.playground.ui.activity.main.MainActivity
 import com.sucho.playground.ui.activity.main.MainViewModel
 import com.sucho.playground.ui.base.BaseFragment
+import com.sucho.playground.ui.fragment.home.HomeViewState.SetKanyeQuote
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,7 +51,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
 
   private fun initObservers() {
     viewModel.viewState.observe(viewLifecycleOwner, Observer { state ->
-
+      when(state) {
+        is SetKanyeQuote -> {
+          binding.kanyeQuoteView.setQuoteText(state.kanyeQuote.quote)
+        }
+      }
     })
   }
 

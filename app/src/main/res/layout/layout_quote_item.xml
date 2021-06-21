@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+  <androidx.cardview.widget.CardView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:cardBackgroundColor="@color/white">
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="wrap_content"
+      android:layout_height="60dp"
+      >
+
+    <ImageView
+        android:id="@+id/quote_image_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:duplicateParentState="true"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kanye1"
+        />
+
+    <TextView
+        android:id="@+id/quote_text_view"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:text="@string/placeholder_quote"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/quote_image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="8dp"
+        />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.cardview.widget.CardView>
+</layout>
