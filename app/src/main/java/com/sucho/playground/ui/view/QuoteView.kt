@@ -24,4 +24,8 @@ class QuoteView @JvmOverloads constructor(
     quoteTextView.text = quote
   }
 
+  fun setKanyeImage(imageResId: Int) {
+    quoteImageView.setImageResource(imageResId)
+  }
+
 }

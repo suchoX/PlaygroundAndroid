@@ -1,6 +1,8 @@
 package com.sucho.playground.injection
 
+import com.sucho.data.datasource.KanyeImageDataSource
 import com.sucho.data.datasource.KanyeQuotesDataSource
+import com.sucho.playground.datasource.KanyeImageDataSourceImpl
 import com.sucho.playground.datasource.KanyeQuoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
@@ -15,4 +17,8 @@ abstract class DataSourceModule {
   @Binds
   @Singleton
   abstract fun binKanyeQuoteDataSource(kanyeQuoteDataSourceImpl: KanyeQuoteDataSourceImpl): KanyeQuotesDataSource
+
+  @Binds
+  @Singleton
+  abstract fun binKanyeImageDataSource(kanyeImageDataSourceImpl: KanyeImageDataSourceImpl): KanyeImageDataSource
 }

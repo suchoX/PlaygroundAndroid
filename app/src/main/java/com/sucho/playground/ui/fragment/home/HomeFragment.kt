@@ -53,7 +53,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
     viewModel.viewState.observe(viewLifecycleOwner, Observer { state ->
       when(state) {
         is SetKanyeQuote -> {
-          binding.kanyeQuoteView.setQuoteText(state.kanyeQuote.quote)
+          binding.kanyeQuoteView.setQuoteText(state.kanyeQuoteWithImage.quote)
+          binding.kanyeQuoteView.setKanyeImage(state.kanyeQuoteWithImage.imageResId)
         }
       }
     })
