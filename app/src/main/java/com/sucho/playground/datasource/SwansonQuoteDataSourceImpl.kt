@@ -1,10 +1,10 @@
 package com.sucho.playground.datasource
 
-import com.sucho.data.datasource.KanyeQuotesDataSource
-import com.sucho.data.remote.KanyeQuoteApiService
+import android.util.Log
+import com.sucho.data.datasource.SwansonQuotesDataSource
 import com.sucho.data.remote.SafeResult
+import com.sucho.data.remote.SwansonQuoteApiService
 import com.sucho.data.remote.safeApiCall
-import com.sucho.domain.responemodels.KanyeQuoteResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -13,15 +13,14 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class KanyeQuoteDataSourceImpl @Inject constructor(
-  private val kanyeQuoteApiService: KanyeQuoteApiService
-  ): KanyeQuotesDataSource {
-
-  override val kanyeQuotes: Flow<SafeResult<KanyeQuoteResponse>>
+class SwansonQuoteDataSourceImpl @Inject constructor(
+  private val swansonQuoteApiService: SwansonQuoteApiService
+) : SwansonQuotesDataSource {
+  override val swansonQuotes: Flow<SafeResult<List<String>>>
     get() = flow {
-      while(true) {
+      while (true) {
         val result = safeApiCall(Dispatchers.IO) {
-          kanyeQuoteApiService.getKanyeQuote()
+          swansonQuoteApiService.getSwansonQuote()
         }
         emit(result)
         delay(6000)

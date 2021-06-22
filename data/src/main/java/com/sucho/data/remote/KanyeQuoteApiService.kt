@@ -11,5 +11,5 @@ interface KanyeQuoteApiService {
     }
   }
 
-  @GET(".") suspend fun getFiveRandomJokes(): KanyeQuoteResponse
+  @GET(".") suspend fun getKanyeQuote(): KanyeQuoteResponse
 }

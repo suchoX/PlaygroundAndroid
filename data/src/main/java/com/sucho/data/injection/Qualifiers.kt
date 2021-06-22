@@ -4,4 +4,8 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class KanyeQuotesRetrofit
+annotation class KanyeQuoteRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class SwansonQuoteRetrofit
