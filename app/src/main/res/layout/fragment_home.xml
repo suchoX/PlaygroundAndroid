@@ -51,6 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quotes_heading"
         android:layout_marginTop="24dp"
+        android:scrollbars="none"
         >
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="wrap_content"
@@ -62,7 +63,16 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="16dp"
+            />
+        <com.sucho.playground.ui.view.QuoteView
+            android:id="@+id/swanson_quote_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingLeft="16dp"
+            app:layout_constraintStart_toEndOf="@+id/kanye_quote_view"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingEnd="16dp"
             />
       </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
