@@ -17,7 +17,6 @@ class KanyeQuoteWithImageRepo @Inject constructor(
   kanyeQuotesDataSource: KanyeQuotesDataSource,
   kanyeImageDataSource: KanyeImageDataSource
 ) {
-
   val kanyeQuotes: Flow<KanyeQuoteWithImage> =
     kanyeQuotesDataSource.kanyeQuotes
       .filter { result -> result is Success }

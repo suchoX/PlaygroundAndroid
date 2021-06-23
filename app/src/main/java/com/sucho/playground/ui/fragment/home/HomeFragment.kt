@@ -12,6 +12,7 @@ import com.sucho.playground.ui.activity.main.MainActivity
 import com.sucho.playground.ui.activity.main.MainViewModel
 import com.sucho.playground.ui.base.BaseFragment
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetKanyeQuote
+import com.sucho.playground.ui.fragment.home.HomeViewState.SetSwansonQuote
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,6 +57,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
         is SetKanyeQuote -> {
           binding.kanyeQuoteView.setQuoteText(state.kanyeQuoteWithImage.quote)
           binding.kanyeQuoteView.setKanyeImage(state.kanyeQuoteWithImage.imageResId)
+        }
+        is SetSwansonQuote -> {
         }
       }
     })
