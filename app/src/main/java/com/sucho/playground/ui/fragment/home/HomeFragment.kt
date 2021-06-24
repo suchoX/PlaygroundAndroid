@@ -1,11 +1,13 @@
 package com.sucho.playground.ui.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStoreOwner
+import com.sucho.domain.model.WalterWhiteQuote
 import com.sucho.playground.R
 import com.sucho.playground.databinding.FragmentHomeBinding
 import com.sucho.playground.ui.activity.main.MainActivity
@@ -13,6 +15,7 @@ import com.sucho.playground.ui.activity.main.MainViewModel
 import com.sucho.playground.ui.base.BaseFragment
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetKanyeQuote
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetSwansonQuote
+import com.sucho.playground.ui.fragment.home.HomeViewState.SetWalterWhiteQuote
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,6 +65,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
         is SetSwansonQuote -> {
           binding.swansonQuoteView.setQuoteText(state.swansonQuoteWithImage.quote)
           binding.swansonQuoteView.setKanyeImage(state.swansonQuoteWithImage.imageResId)
+        }
+        is SetWalterWhiteQuote -> {
         }
       }
     })

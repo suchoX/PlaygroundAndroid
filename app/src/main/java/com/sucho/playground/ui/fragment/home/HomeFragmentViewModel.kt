@@ -9,6 +9,7 @@ import com.sucho.data.usecase.GetSwansonQuoteUseCase
 import com.sucho.data.usecase.GetWalterWhiteQuoteWithImageUseCase
 import com.sucho.domain.model.KanyeQuoteWithImage
 import com.sucho.domain.model.SwansonQuoteWithImage
+import com.sucho.domain.model.WalterWhiteQuoteWithImage
 import com.sucho.playground.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -44,6 +45,7 @@ class HomeFragmentViewModel @Inject constructor(
   fun fetchWalterWhiteQuotesPeriodically() {
     viewModelScope.launch {
       walterWhiteQuoteWithImageUseCase.perform().collect { walterWhiteQuoteWithImage ->
+        _viewState.value = HomeViewState.SetWalterWhiteQuote(walterWhiteQuoteWithImage)
       }
     }
   }
@@ -52,4 +54,5 @@ class HomeFragmentViewModel @Inject constructor(
 sealed class HomeViewState {
   class SetKanyeQuote(val kanyeQuoteWithImage: KanyeQuoteWithImage) : HomeViewState()
   class SetSwansonQuote(val swansonQuoteWithImage: SwansonQuoteWithImage): HomeViewState()
+  class SetWalterWhiteQuote(val walterWhiteQuoteWithImage: WalterWhiteQuoteWithImage): HomeViewState()
 }
