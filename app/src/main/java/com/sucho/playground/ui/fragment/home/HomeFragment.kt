@@ -67,6 +67,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
           binding.swansonQuoteView.setKanyeImage(state.swansonQuoteWithImage.imageResId)
         }
         is SetWalterWhiteQuote -> {
+          binding.walterWhiteQuoteView.setQuoteText(state.walterWhiteQuoteWithImage.quote)
+          binding.walterWhiteQuoteView.setKanyeImage(state.walterWhiteQuoteWithImage.imageResId)
         }
       }
     })

@@ -46,7 +46,7 @@
     <HorizontalScrollView
         android:id="@+id/quotes_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quotes_heading"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:paddingStart="16dp"
+            android:layout_marginStart="16dp"
             />
         <com.sucho.playground.ui.view.QuoteView
             android:id="@+id/swanson_quote_view"
@@ -72,7 +72,16 @@
             android:paddingLeft="16dp"
             app:layout_constraintStart_toEndOf="@+id/kanye_quote_view"
             app:layout_constraintTop_toTopOf="parent"
-            android:paddingEnd="16dp"
+            android:layout_marginEnd="16dp"
+            />
+        <com.sucho.playground.ui.view.QuoteView
+            android:id="@+id/walter_white_quote_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kanye_quote_view"
+            android:layout_marginTop="16dp"
             />
       </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
