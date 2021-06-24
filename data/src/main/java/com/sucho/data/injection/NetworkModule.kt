@@ -3,6 +3,7 @@ package com.sucho.data.injection
 import com.sucho.data.remote.KanyeQuoteApiService
 import com.sucho.data.remote.RetrofitHelper
 import com.sucho.data.remote.SwansonQuoteApiService
+import com.sucho.data.remote.WalterWhiteQuoteApiService
 import com.sucho.data.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -49,5 +50,20 @@ class NetworkModule {
   @Singleton
   fun provideSwansonQuoteApiService(@SwansonQuoteRetrofit retrofit: Retrofit): SwansonQuoteApiService {
     return SwansonQuoteApiService.createRetrofitService(retrofit)
+  }
+
+  @Provides
+  @Singleton
+  @WalterWhiteQuoteRetrofit
+  fun provideWalterWhiteQuoteRetrofit(
+    okHttpClient: OkHttpClient
+  ): Retrofit {
+    return RetrofitHelper.createRetrofitClient(okHttpClient, Constants.WALTER_WHITE_QUOTES_URL)
+  }
+
+  @Provides
+  @Singleton
+  fun provideWalterWhiteQuoteApiService(@WalterWhiteQuoteRetrofit retrofit: Retrofit): WalterWhiteQuoteApiService {
+    return WalterWhiteQuoteApiService.createRetrofitService(retrofit)
   }
 }

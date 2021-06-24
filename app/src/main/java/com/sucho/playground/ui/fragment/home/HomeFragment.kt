@@ -49,6 +49,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
   private fun initListeners() {
     viewModel.fetchKanyeQuotesPeriodically()
     viewModel.fetchSwansonQuotesPeriodically()
+    viewModel.fetchWalterWhiteQuotesPeriodically()
   }
 
   private fun initObservers() {

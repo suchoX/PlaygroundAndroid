@@ -4,10 +4,12 @@ import com.sucho.data.datasource.KanyeImageDataSource
 import com.sucho.data.datasource.KanyeQuotesDataSource
 import com.sucho.data.datasource.SwansonImageDataSource
 import com.sucho.data.datasource.SwansonQuotesDataSource
+import com.sucho.data.datasource.WalterWhiteQuotesDataSource
 import com.sucho.playground.datasource.KanyeImageDataSourceImpl
 import com.sucho.playground.datasource.KanyeQuoteDataSourceImpl
 import com.sucho.playground.datasource.SwansonImageDataSourceImpl
 import com.sucho.playground.datasource.SwansonQuoteDataSourceImpl
+import com.sucho.playground.datasource.WalterWhiteQuoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -33,4 +35,8 @@ abstract class DataSourceModule {
   @Binds
   @Singleton
   abstract fun bindSwansonImageDataSource(swansonImageDataSourceImpl: SwansonImageDataSourceImpl): SwansonImageDataSource
+
+  @Binds
+  @Singleton
+  abstract fun bindWalterWhiteQuoteDataSource(walterWhiteQuoteDataSourceImpl: WalterWhiteQuoteDataSourceImpl): WalterWhiteQuotesDataSource
 }

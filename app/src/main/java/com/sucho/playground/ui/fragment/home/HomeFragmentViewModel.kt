@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.sucho.data.usecase.GetKanyeQuoteWithImageUseCase
 import com.sucho.data.usecase.GetSwansonQuoteUseCase
+import com.sucho.data.usecase.GetWalterWhiteQuoteWithImageUseCase
 import com.sucho.domain.model.KanyeQuoteWithImage
 import com.sucho.domain.model.SwansonQuoteWithImage
 import com.sucho.playground.ui.base.BaseViewModel
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class HomeFragmentViewModel @Inject constructor(
   private val savedStateHandle: SavedStateHandle,
   private val kanyeQuoteWithImageUseCase: GetKanyeQuoteWithImageUseCase,
-  private val swansonQuoteUseCase: GetSwansonQuoteUseCase
+  private val swansonQuoteUseCase: GetSwansonQuoteUseCase,
+  private val walterWhiteQuoteWithImageUseCase: GetWalterWhiteQuoteWithImageUseCase
 ) : BaseViewModel() {
   private var _viewState: MutableLiveData<HomeViewState> = MutableLiveData()
   val viewState: LiveData<HomeViewState> = _viewState
@@ -35,6 +37,13 @@ class HomeFragmentViewModel @Inject constructor(
     viewModelScope.launch {
       swansonQuoteUseCase.perform().collect { swansonQuoteWithImage ->
         _viewState.value = HomeViewState.SetSwansonQuote(swansonQuoteWithImage)
+      }
+    }
+  }
+
+  fun fetchWalterWhiteQuotesPeriodically() {
+    viewModelScope.launch {
+      walterWhiteQuoteWithImageUseCase.perform().collect { walterWhiteQuoteWithImage ->
       }
     }
   }
