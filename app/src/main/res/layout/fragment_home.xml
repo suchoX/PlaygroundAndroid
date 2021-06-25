@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
   <data>
     <variable
@@ -37,54 +38,28 @@
         android:text="@string/quotes_heading"
         android:textColor="@color/black"
         android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@id/quotes_scroll_view"
+        app:layout_constraintBottom_toTopOf="@id/quotes_recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/heading_image"
         />
 
-    <HorizontalScrollView
-        android:id="@+id/quotes_scroll_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quotes_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quotes_heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToPadding="false"
         android:layout_marginTop="24dp"
-        android:scrollbars="none"
-        >
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          >
-        <com.sucho.playground.ui.view.QuoteView
-            android:id="@+id/kanye_quote_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="16dp"
-            />
-        <com.sucho.playground.ui.view.QuoteView
-            android:id="@+id/swanson_quote_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            app:layout_constraintStart_toEndOf="@+id/kanye_quote_view"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="16dp"
-            />
-        <com.sucho.playground.ui.view.QuoteView
-            android:id="@+id/walter_white_quote_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/kanye_quote_view"
-            android:layout_marginTop="16dp"
-            />
-      </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
+        android:clipChildren="false"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="2"
+        app:reverseLayout="true"
+        app:hasFixedSize="@{true}"
+        tools:listitem="@layout/layout_quote_item"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

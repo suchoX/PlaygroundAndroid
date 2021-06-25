@@ -1,13 +1,11 @@
 package com.sucho.playground.ui.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStoreOwner
-import com.sucho.domain.model.WalterWhiteQuote
 import com.sucho.playground.R
 import com.sucho.playground.databinding.FragmentHomeBinding
 import com.sucho.playground.ui.activity.main.MainActivity
@@ -16,12 +14,14 @@ import com.sucho.playground.ui.base.BaseFragment
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetKanyeQuote
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetSwansonQuote
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetWalterWhiteQuote
+import com.sucho.playground.utils.smoothScrollToPositionWithSpeed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, MainViewModel>() {
 
   private var fragmentView: View? = null
+  private lateinit var quotesAdapter: QuotesAdapter
 
   override fun getViewModelClass(): Class<HomeFragmentViewModel> = HomeFragmentViewModel::class.java
 
@@ -45,8 +45,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
   }
 
   private fun init() {
+    initUI()
     initListeners()
     initObservers()
+  }
+
+  private fun initUI() {
+    quotesAdapter = QuotesAdapter()
+    binding.quotesRecyclerView.apply {
+      smoothScrollToPositionWithSpeed(3)
+      adapter = quotesAdapter
+    }
   }
 
   private fun initListeners() {
@@ -57,20 +66,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
 
   private fun initObservers() {
     viewModel.viewState.observe(viewLifecycleOwner, Observer { state ->
-      when(state) {
-        is SetKanyeQuote -> {
-          binding.kanyeQuoteView.setQuoteText(state.kanyeQuoteWithImage.quote)
-          binding.kanyeQuoteView.setKanyeImage(state.kanyeQuoteWithImage.imageResId)
-        }
-        is SetSwansonQuote -> {
-          binding.swansonQuoteView.setQuoteText(state.swansonQuoteWithImage.quote)
-          binding.swansonQuoteView.setKanyeImage(state.swansonQuoteWithImage.imageResId)
-        }
-        is SetWalterWhiteQuote -> {
-          binding.walterWhiteQuoteView.setQuoteText(state.walterWhiteQuoteWithImage.quote)
-          binding.walterWhiteQuoteView.setKanyeImage(state.walterWhiteQuoteWithImage.imageResId)
-        }
+      when (state) {
+        is SetKanyeQuote -> quotesAdapter.kanyeQuoteWithImage = state.kanyeQuoteWithImage
+        is SetSwansonQuote -> quotesAdapter.swansonQuoteWithImage = state.swansonQuoteWithImage
+        is SetWalterWhiteQuote -> quotesAdapter.walterWhiteQuoteWithImage = state.walterWhiteQuoteWithImage
       }
+      quotesAdapter.notifyDataSetChanged()
     })
   }
 
