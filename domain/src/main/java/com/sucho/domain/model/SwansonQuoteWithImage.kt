@@ -1,6 +1,10 @@
 package com.sucho.domain.model
 
-data class SwansonQuoteWithImage(
+class SwansonQuoteWithImage constructor(
   val quote: String,
   val imageResId: Int
-)
+) {
+  companion object {
+    fun getType() = 2
+  }
+}

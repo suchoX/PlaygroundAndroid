@@ -1,6 +1,7 @@
 package com.sucho.playground.utils
 
 import android.util.DisplayMetrics
+import android.view.View
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 

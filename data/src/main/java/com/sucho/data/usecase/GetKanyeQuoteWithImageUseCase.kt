@@ -1,8 +1,6 @@
 package com.sucho.data.usecase
 
-import com.sucho.data.remote.SafeResult
 import com.sucho.data.repository.KanyeQuoteWithImageRepo
-import com.sucho.domain.model.KanyeQuote
 import com.sucho.domain.model.KanyeQuoteWithImage
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

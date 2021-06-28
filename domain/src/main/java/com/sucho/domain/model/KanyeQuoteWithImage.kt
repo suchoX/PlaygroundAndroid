@@ -1,6 +1,10 @@
 package com.sucho.domain.model
 
-data class KanyeQuoteWithImage(
+class KanyeQuoteWithImage constructor(
   val quote: String,
   val imageResId: Int
-)
+) {
+  companion object {
+    fun getType() = 1
+  }
+}

@@ -52,8 +52,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
 
   private fun initUI() {
     quotesAdapter = QuotesAdapter()
+    quotesAdapter.quoteClickListener = object : QuoteClickListener {
+      override fun saveQuote(quote: String, type: Int, imgRes: Int) {
+        viewModel.saveQuote(quote,type, imgRes)
+      }
+
+    }
     binding.quotesRecyclerView.apply {
-      smoothScrollToPositionWithSpeed(3)
       adapter = quotesAdapter
     }
   }
@@ -62,6 +67,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
     viewModel.fetchKanyeQuotesPeriodically()
     viewModel.fetchSwansonQuotesPeriodically()
     viewModel.fetchWalterWhiteQuotesPeriodically()
+    viewModel.getQuotes()
   }
 
   private fun initObservers() {
