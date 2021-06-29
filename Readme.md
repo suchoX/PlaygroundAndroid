@@ -28,4 +28,8 @@ Everytime a new feature is released or I wanted to experiement with something, I
 # Database
 - Room with Coroutine
 
+# Animation
+- Lottie
+
+
 This app will evolve with time, but will never be a specific feature driven. It will be a mixture of features that makes no sense with together (Imagine Notes app with Cat pictures and Chuck Norris Jokes) but will showcase the Android features
