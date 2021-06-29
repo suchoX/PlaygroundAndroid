@@ -16,7 +16,6 @@ import com.sucho.playground.ui.base.BaseFragment
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetKanyeQuote
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetSwansonQuote
 import com.sucho.playground.ui.fragment.home.HomeViewState.SetWalterWhiteQuote
-import com.sucho.playground.utils.smoothScrollToPositionWithSpeed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,11 +55,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
     quotesAdapter = QuotesAdapter()
     quotesAdapter.quoteClickListener = object : QuoteClickListener {
       override fun saveQuote(quote: String, type: Int, imgRes: Int) {
-        viewModel.saveQuote(quote,type, imgRes)
+        viewModel.saveQuote(quote, type, imgRes)
         binding.animationView.apply {
           visibility = View.VISIBLE
           playAnimation()
-          addAnimatorListener(object: AnimatorListener {
+          addAnimatorListener(object : AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {
               binding.quotesRecyclerView.alpha = 0.8f
             }
@@ -89,6 +88,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
     viewModel.fetchSwansonQuotesPeriodically()
     viewModel.fetchWalterWhiteQuotesPeriodically()
     viewModel.getQuotes()
+
+    binding.fab.cardBackgroundColor
+    binding.fab.setOnClickListener {
+      binding.motionLayout.transitionToEnd()
+    }
+
+    binding.headingImage.setOnClickListener {
+      binding.motionLayout.transitionToStart()
+    }
   }
 
   private fun initObservers() {

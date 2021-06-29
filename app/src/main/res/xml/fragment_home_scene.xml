@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+  <Transition
+      app:constraintSetEnd="@id/end"
+      app:constraintSetStart="@+id/start"
+      app:duration="300"
+      app:motionInterpolator="easeIn">
+    <KeyFrameSet>
+      <KeyPosition
+          motion:framePosition="50"
+          motion:keyPositionType="pathRelative"
+          motion:motionTarget="@id/fab"
+          motion:percentY="-0.4" />
+      <KeyPosition
+          motion:framePosition="50"
+          motion:keyPositionType="pathRelative"
+          motion:motionTarget="@id/fab_icon"
+          motion:percentY="-0.4" />
+    </KeyFrameSet>
+    <KeyFrameSet>
+      <KeyAttribute
+          app:framePosition="0"
+          app:motionTarget="@id/fab_icon">
+        <CustomAttribute
+            app:attributeName="alpha"
+            app:customFloatValue="1.0" />
+      </KeyAttribute>
+
+      <KeyAttribute
+          app:framePosition="10"
+          app:motionTarget="@id/fab_icon">
+        <CustomAttribute
+            app:attributeName="alpha"
+            app:customFloatValue="0.0" />
+      </KeyAttribute>
+    </KeyFrameSet>
+
+  </Transition>
+
+  <ConstraintSet android:id="@+id/start">
+    <Constraint
+        android:id="@id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+      <CustomAttribute
+          motion:attributeName="radius"
+          motion:customFloatValue="60" />
+      <CustomAttribute
+          motion:attributeName="cardBackgroundColor"
+          motion:customColorValue="@color/fab" />
+    </Constraint>
+
+    <Constraint android:id="@id/fab_icon">
+      <CustomAttribute
+          motion:attributeName="alpha"
+          motion:customFloatValue="1.0" />
+    </Constraint>
+  </ConstraintSet>
+
+  <ConstraintSet android:id="@+id/end">
+    <Constraint
+        android:id="@id/fab"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+      <CustomAttribute
+          motion:attributeName="radius"
+          motion:customFloatValue="8" />
+      <CustomAttribute
+          motion:attributeName="cardBackgroundColor"
+          motion:customColorValue="@color/fabExpanded" />
+    </Constraint>
+    <Constraint android:id="@id/fab_icon">
+      <CustomAttribute
+          motion:attributeName="alpha"
+          motion:customFloatValue="0.0" />
+    </Constraint>
+  </ConstraintSet>
+</MotionScene>
