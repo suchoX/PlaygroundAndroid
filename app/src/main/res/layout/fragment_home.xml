@@ -60,6 +60,17 @@
         app:hasFixedSize="@{true}"
         tools:listitem="@layout/layout_quote_item"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/quotes_recycler_view"
+        app:layout_constraintBottom_toBottomOf="@id/quotes_recycler_view"
+        app:lottie_fileName="fav_animation.json"
+        android:visibility="invisible"/>
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

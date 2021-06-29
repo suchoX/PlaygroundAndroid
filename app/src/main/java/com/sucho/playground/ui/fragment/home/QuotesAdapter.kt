@@ -1,7 +1,6 @@
 package com.sucho.playground.ui.fragment.home
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ import com.sucho.playground.R
 import com.sucho.playground.databinding.LayoutQuoteItemBinding
 import com.sucho.playground.utils.CustomClickListener
 import com.sucho.playground.utils.OnDoubleClickListener
-import java.lang.annotation.ElementType
 
 class QuotesAdapter : Adapter<QuotesViewHolder>() {
   private lateinit var inflater: LayoutInflater
@@ -70,8 +68,8 @@ class QuotesAdapter : Adapter<QuotesViewHolder>() {
       }
     }
   }
-  override fun getItemCount(): Int = 3
 
+  override fun getItemCount(): Int = 3
 }
 
 class QuotesViewHolder constructor(val layoutQuoteItemBinding: LayoutQuoteItemBinding) :

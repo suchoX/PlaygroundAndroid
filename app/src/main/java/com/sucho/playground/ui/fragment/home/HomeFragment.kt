@@ -1,5 +1,7 @@
 package com.sucho.playground.ui.fragment.home
 
+import android.animation.Animator
+import android.animation.Animator.AnimatorListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +57,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
     quotesAdapter.quoteClickListener = object : QuoteClickListener {
       override fun saveQuote(quote: String, type: Int, imgRes: Int) {
         viewModel.saveQuote(quote,type, imgRes)
+        binding.animationView.apply {
+          visibility = View.VISIBLE
+          playAnimation()
+          addAnimatorListener(object: AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+              binding.quotesRecyclerView.alpha = 0.8f
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+              binding.quotesRecyclerView.alpha = 1f
+              visibility = View.INVISIBLE
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {}
+
+            override fun onAnimationRepeat(animation: Animator?) {}
+
+          })
+        }
       }
 
     }
