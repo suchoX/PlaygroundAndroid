@@ -7,5 +7,7 @@
   <color name="fab">#91a4fc</color>
   <color name="fabExpanded">#1c1d24</color>
   <color name="headingText">#FFFFFF</color>
+  <color name="primaryText">#F1F1F1</color>
+  <color name="itemBackground">#32301F</color>
 
 </resources>

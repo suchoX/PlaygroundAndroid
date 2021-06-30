@@ -7,6 +7,8 @@
   <color name="fab">#0336ff</color>
   <color name="fabExpanded">#0336ff</color>
   <color name="headingText">#000000</color>
+  <color name="primaryText">#151515</color>
+  <color name="itemBackground">#FFFFFF</color>
 
   <color name="black">#FF000000</color>
   <color name="white">#FFFFFFFF</color>

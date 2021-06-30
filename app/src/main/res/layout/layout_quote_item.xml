@@ -5,7 +5,7 @@
   <androidx.cardview.widget.CardView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:cardBackgroundColor="@color/white"
+      app:cardBackgroundColor="@color/itemBackground"
       android:layout_margin="6dp"
       android:stateListAnimator="@animator/quote_tap"
       >
@@ -37,7 +37,7 @@
           android:fontFamily="@font/rubik"
           android:maxLines="5"
           android:text="@string/placeholder_quote"
-          android:textColor="@color/black"
+          android:textColor="@color/primaryText"
           android:textSize="12sp"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
