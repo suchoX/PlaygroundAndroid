@@ -33,6 +33,7 @@ class HomeFragmentViewModel @Inject constructor(
 ) : BaseViewModel() {
   private var _viewState: MutableLiveData<HomeViewState> = MutableLiveData()
   val viewState: LiveData<HomeViewState> = _viewState
+  val savedQuotes: ArrayList<QuoteEntity> = ArrayList()
 
   fun fetchKanyeQuotesPeriodically() {
     viewModelScope.launch {
@@ -69,7 +70,8 @@ class HomeFragmentViewModel @Inject constructor(
   fun getQuotes() {
     viewModelScope.launch {
       withContext(Dispatchers.IO) {
-        val x = getQuotesUseCase.perform()
+        savedQuotes.clear()
+        savedQuotes.addAll(getQuotesUseCase.perform())
       }
     }
   }

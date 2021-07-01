@@ -3,9 +3,13 @@ package com.sucho.playground.ui.fragment.home
 import android.animation.Animator
 import android.animation.Animator.AnimatorListener
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.annotation.AnimRes
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStoreOwner
 import com.sucho.playground.R
@@ -23,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
 
   private var fragmentView: View? = null
   private lateinit var quotesAdapter: QuotesAdapter
+  private lateinit var savedQuotesAdapter: SavedQuotesAdapter
 
   override fun getViewModelClass(): Class<HomeFragmentViewModel> = HomeFragmentViewModel::class.java
 
@@ -76,10 +81,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
           })
         }
       }
-
     }
     binding.quotesRecyclerView.apply {
       adapter = quotesAdapter
+    }
+
+    savedQuotesAdapter = SavedQuotesAdapter()
+    binding.savedQuotesRecyclerView.apply {
+      adapter = savedQuotesAdapter
     }
   }
 
@@ -95,19 +104,53 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
     }
 
     binding.headingImage.setOnClickListener {
+      savedQuotesAdapter.clearSavedQuotes()
       binding.motionLayout.transitionToStart()
     }
+
+    binding.motionLayout.addTransitionListener(object : MotionLayout.TransitionListener {
+      override fun onTransitionStarted(p0: MotionLayout?, startId: Int, p2: Int) {}
+
+      override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
+
+      override fun onTransitionCompleted(p0: MotionLayout?, currentId: Int) {
+        if (currentId == R.id.end) {
+          Handler().postDelayed({
+            savedQuotesAdapter.setSavedQuotes(viewModel.savedQuotes)
+            animateSavedQuotesRecyclerviewItems(R.anim.layout_animation_saved_quote)
+          }, 100)
+        }
+      }
+
+      override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
+    })
   }
 
   private fun initObservers() {
     viewModel.viewState.observe(viewLifecycleOwner, Observer { state ->
       when (state) {
-        is SetKanyeQuote -> quotesAdapter.kanyeQuoteWithImage = state.kanyeQuoteWithImage
-        is SetSwansonQuote -> quotesAdapter.swansonQuoteWithImage = state.swansonQuoteWithImage
-        is SetWalterWhiteQuote -> quotesAdapter.walterWhiteQuoteWithImage = state.walterWhiteQuoteWithImage
+        is SetKanyeQuote -> {
+          quotesAdapter.kanyeQuoteWithImage = state.kanyeQuoteWithImage
+          quotesAdapter.notifyItemChanged(0)
+        }
+        is SetSwansonQuote -> {
+          quotesAdapter.swansonQuoteWithImage = state.swansonQuoteWithImage
+          quotesAdapter.notifyItemChanged(1)
+        }
+        is SetWalterWhiteQuote -> {
+          quotesAdapter.walterWhiteQuoteWithImage = state.walterWhiteQuoteWithImage
+          quotesAdapter.notifyItemChanged(2)
+        }
       }
-      quotesAdapter.notifyDataSetChanged()
     })
+  }
+
+  private fun animateSavedQuotesRecyclerviewItems(@AnimRes animId: Int){
+    binding.savedQuotesRecyclerView.apply {
+      layoutAnimation = AnimationUtils.loadLayoutAnimation(context, animId)
+      adapter?.notifyDataSetChanged()
+      scheduleLayoutAnimation()
+    }
   }
 
 }

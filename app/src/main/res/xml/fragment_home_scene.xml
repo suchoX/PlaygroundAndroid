@@ -60,6 +60,14 @@
           motion:attributeName="alpha"
           motion:customFloatValue="1.0" />
     </Constraint>
+    <Constraint
+        android:id="@id/saved_quotes_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="@id/fab"
+        app:layout_constraintStart_toStartOf="@id/fab"
+        app:layout_constraintTop_toBottomOf="@id/fab" />
   </ConstraintSet>
 
   <ConstraintSet android:id="@+id/end">
@@ -83,5 +91,13 @@
           motion:attributeName="alpha"
           motion:customFloatValue="0.0" />
     </Constraint>
+    <Constraint
+        android:id="@id/saved_quotes_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="@id/fab"
+        app:layout_constraintStart_toStartOf="@id/fab"
+        app:layout_constraintTop_toTopOf="@id/fab"
+        app:layout_constraintBottom_toBottomOf="@id/fab"/>
   </ConstraintSet>
 </MotionScene>
