@@ -12,7 +12,7 @@ import com.sucho.domain.model.KanyeQuoteWithImage
 import com.sucho.domain.model.SwansonQuoteWithImage
 import com.sucho.domain.model.WalterWhiteQuoteWithImage
 import com.sucho.playground.R
-import com.sucho.playground.databinding.LayoutQuoteItemBinding
+import com.sucho.playground.databinding.ItemQuoteBinding
 import com.sucho.playground.utils.CustomClickListener
 import com.sucho.playground.utils.OnDoubleClickListener
 
@@ -32,14 +32,14 @@ class QuotesAdapter : Adapter<QuotesViewHolder>() {
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuotesViewHolder =
-    QuotesViewHolder(DataBindingUtil.inflate(inflater, R.layout.layout_quote_item, parent, false))
+    QuotesViewHolder(DataBindingUtil.inflate(inflater, R.layout.item_quote, parent, false))
 
   override fun onBindViewHolder(holder: QuotesViewHolder, position: Int) {
     when (position) {
       0 -> kanyeQuoteWithImage?.let {
-        holder.layoutQuoteItemBinding.quoteTextView.text = it.quote
-        holder.layoutQuoteItemBinding.quoteImageView.setImageResource(it.imageResId)
-        holder.layoutQuoteItemBinding.root.setOnClickListener(OnDoubleClickListener(object : CustomClickListener {
+        holder.itemQuoteBinding.quoteTextView.text = it.quote
+        holder.itemQuoteBinding.quoteImageView.setImageResource(it.imageResId)
+        holder.itemQuoteBinding.root.setOnClickListener(OnDoubleClickListener(object : CustomClickListener {
           override fun onSingleClickEvent(view: View?) {}
           override fun onDoubleClickEvent(view: View?) {
             quoteClickListener.saveQuote(it.quote, KanyeQuoteWithImage.getType(), it.imageResId)
@@ -47,9 +47,9 @@ class QuotesAdapter : Adapter<QuotesViewHolder>() {
         }))
       }
       1 -> swansonQuoteWithImage?.let {
-        holder.layoutQuoteItemBinding.quoteTextView.text = it.quote
-        holder.layoutQuoteItemBinding.quoteImageView.setImageResource(it.imageResId)
-        holder.layoutQuoteItemBinding.root.setOnClickListener(OnDoubleClickListener(object : CustomClickListener {
+        holder.itemQuoteBinding.quoteTextView.text = it.quote
+        holder.itemQuoteBinding.quoteImageView.setImageResource(it.imageResId)
+        holder.itemQuoteBinding.root.setOnClickListener(OnDoubleClickListener(object : CustomClickListener {
           override fun onSingleClickEvent(view: View?) {}
           override fun onDoubleClickEvent(view: View?) {
             quoteClickListener.saveQuote(it.quote, SwansonQuoteWithImage.getType(), it.imageResId)
@@ -57,9 +57,9 @@ class QuotesAdapter : Adapter<QuotesViewHolder>() {
         }))
       }
       2 -> walterWhiteQuoteWithImage?.let {
-        holder.layoutQuoteItemBinding.quoteTextView.text = it.quote
-        holder.layoutQuoteItemBinding.quoteImageView.setImageResource(it.imageResId)
-        holder.layoutQuoteItemBinding.root.setOnClickListener(OnDoubleClickListener(object : CustomClickListener {
+        holder.itemQuoteBinding.quoteTextView.text = it.quote
+        holder.itemQuoteBinding.quoteImageView.setImageResource(it.imageResId)
+        holder.itemQuoteBinding.root.setOnClickListener(OnDoubleClickListener(object : CustomClickListener {
           override fun onSingleClickEvent(view: View?) {}
           override fun onDoubleClickEvent(view: View?) {
             quoteClickListener.saveQuote(it.quote, WalterWhiteQuoteWithImage.getType(), it.imageResId)
@@ -72,8 +72,8 @@ class QuotesAdapter : Adapter<QuotesViewHolder>() {
   override fun getItemCount(): Int = 3
 }
 
-class QuotesViewHolder constructor(val layoutQuoteItemBinding: LayoutQuoteItemBinding) :
-  ViewHolder(layoutQuoteItemBinding.root)
+class QuotesViewHolder constructor(val itemQuoteBinding: ItemQuoteBinding) :
+  ViewHolder(itemQuoteBinding.root)
 
 interface QuoteClickListener {
   fun saveQuote(quote: String, type: Int, imgRes: Int)

@@ -62,7 +62,7 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/quotes_heading"
           app:spanCount="2"
-          tools:listitem="@layout/layout_quote_item"
+          tools:listitem="@layout/item_quote"
           />
 
       <com.airbnb.lottie.LottieAnimationView
@@ -111,17 +111,19 @@
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/saved_quotes_recycler_view"
           android:layout_width="match_parent"
-          android:layout_height="300dp"
-          android:layout_marginTop="24dp"
+          android:layout_height="350dp"
           android:clipChildren="false"
           android:clipToPadding="false"
           android:elevation="2dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
           android:layoutAnimation="@anim/layout_animation_saved_quote"
-          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
           app:layout_constraintEnd_toEndOf="@id/fab"
           app:layout_constraintStart_toStartOf="@id/fab"
           app:layout_constraintTop_toBottomOf="@id/fab"
-          tools:listitem="@layout/layout_quote_item"
+          tools:listitem="@layout/item_saved_quote"
+          app:spanCount="2"
           />
     </androidx.constraintlayout.motion.widget.MotionLayout>
   </FrameLayout>

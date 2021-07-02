@@ -15,7 +15,7 @@ class QuoteView @JvmOverloads constructor(
   private val quoteImageView: ImageView
 
   init {
-    LayoutInflater.from(context).inflate(R.layout.layout_quote_item, this, true)
+    LayoutInflater.from(context).inflate(R.layout.item_quote, this, true)
     quoteTextView = findViewById(R.id.quote_text_view)
     quoteImageView = findViewById(R.id.quote_image_view)
   }

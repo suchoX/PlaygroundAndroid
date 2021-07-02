@@ -1,7 +1,6 @@
 package com.sucho.playground.ui.fragment.home
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.sucho.data.db.entity.QuoteEntity
 import com.sucho.playground.R
-import com.sucho.playground.databinding.LayoutQuoteItemBinding
+import com.sucho.playground.databinding.ItemSavedQuoteBinding
 
 class SavedQuotesAdapter : Adapter<SavedQuotesViewHolder>() {
   private lateinit var inflater: LayoutInflater
@@ -25,11 +24,11 @@ class SavedQuotesAdapter : Adapter<SavedQuotesViewHolder>() {
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedQuotesViewHolder =
-    SavedQuotesViewHolder(DataBindingUtil.inflate(inflater, R.layout.layout_quote_item, parent, false))
+    SavedQuotesViewHolder(DataBindingUtil.inflate(inflater, R.layout.item_saved_quote, parent, false))
 
   override fun onBindViewHolder(holder: SavedQuotesViewHolder, position: Int) {
-    holder.layoutQuoteItemBinding.quoteTextView.text = savedQuotes[position].quote
-    holder.layoutQuoteItemBinding.quoteImageView.setImageResource(savedQuotes[position].imgRes)
+    holder.itemSavedQuoteBinding.quoteTextView.text = savedQuotes[position].quote
+    holder.itemSavedQuoteBinding.quoteImageView.setImageResource(savedQuotes[position].imgRes)
   }
 
   override fun getItemCount(): Int = savedQuotes.size
@@ -47,5 +46,5 @@ class SavedQuotesAdapter : Adapter<SavedQuotesViewHolder>() {
 
 }
 
-class SavedQuotesViewHolder constructor(val layoutQuoteItemBinding: LayoutQuoteItemBinding) :
-  ViewHolder(layoutQuoteItemBinding.root)
+class SavedQuotesViewHolder constructor(val itemSavedQuoteBinding: ItemSavedQuoteBinding) :
+  ViewHolder(itemSavedQuoteBinding.root)
