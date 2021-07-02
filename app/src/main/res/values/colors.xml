@@ -10,6 +10,7 @@
   <color name="primaryText">#151515</color>
   <color name="itemBackground">#FFFFFF</color>
 
+  <color name="translucent_view">#B2000000</color>
   <color name="black">#FF000000</color>
   <color name="white">#FFFFFFFF</color>
   <color name="translucent">#33000000</color>

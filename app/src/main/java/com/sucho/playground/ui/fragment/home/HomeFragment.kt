@@ -106,6 +106,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
     binding.headingImage.setOnClickListener {
       savedQuotesAdapter.clearSavedQuotes()
       binding.motionLayout.transitionToStart()
+      binding.translucentView.visibility = View.INVISIBLE
     }
 
     binding.motionLayout.addTransitionListener(object : MotionLayout.TransitionListener {
@@ -115,6 +116,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
 
       override fun onTransitionCompleted(p0: MotionLayout?, currentId: Int) {
         if (currentId == R.id.end) {
+          binding.translucentView.visibility = View.VISIBLE
           Handler().postDelayed({
             savedQuotesAdapter.setSavedQuotes(viewModel.savedQuotes)
             animateSavedQuotesRecyclerviewItems(R.anim.layout_animation_saved_quote)
