@@ -2,7 +2,11 @@
 
 This repo is what it actually says. Its a personal app that I use to try out native Android features and experiment with them.
 
-Everytime a new feature is released or I wanted to experiement with something, I always lost motivation by the time I had set up the project, architecture and integrate other basic libraries to make the app run in an accpetable state.
+Everytime a new feature is released or I wanted to experiment with something, I always lost motivation by the time I had set up the project, architecture and integrate other basic libraries to make the app run in an accpetable state.
+
+Day Mode                   |  Night Mode
+:-------------------------:|:-------------------------:
+![](https://github.com/suchoX/PlaygroundAndroid/blob/master/screens/day_mode.gif)  |  ![](https://github.com/suchoX/PlaygroundAndroid/blob/master/screens/night_mode.gif)
 
 ## Features as of now
 
