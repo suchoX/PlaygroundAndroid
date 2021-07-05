@@ -24,15 +24,15 @@ Day Mode                   |  Night Mode
 - Retrofit
 - Gson
 
-# Background Execution
+### Background Execution
 - Suspend Functions
 - Kotlin Coroutines
 - Kotlin Flows
 
-# Database
+### Database
 - Room with Coroutine
 
-# Animation
+### Animation
 - Lottie
 - MotionLayout
 - LayoutAnimation
