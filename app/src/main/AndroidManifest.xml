@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.sucho.playground">
 
   <uses-permission android:name="android.permission.INTERNET"/>
@@ -13,6 +14,13 @@
       android:supportsRtl="true"
       android:theme="@style/Playground.AppTheme"
       android:networkSecurityConfig="@xml/network_security_config">
+
+    <provider
+        android:name="androidx.startup.InitializationProvider"
+        android:authorities="${applicationId}.androidx-startup"
+        tools:node="remove">
+    </provider>
+
     <activity android:name=".ui.activity.main.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

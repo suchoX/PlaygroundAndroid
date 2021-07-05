@@ -109,6 +109,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel, Ma
       binding.translucentView.visibility = View.INVISIBLE
     }
 
+    binding.workmanagerButton.setOnClickListener {
+      viewModel.startQuotesWorkManager()
+    }
+
     binding.motionLayout.addTransitionListener(object : MotionLayout.TransitionListener {
       override fun onTransitionStarted(p0: MotionLayout?, startId: Int, p2: Int) {}
 

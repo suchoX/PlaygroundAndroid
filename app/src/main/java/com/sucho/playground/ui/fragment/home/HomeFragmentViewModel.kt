@@ -5,16 +5,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy.REPLACE
+import androidx.work.NetworkType.CONNECTED
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.sucho.data.db.entity.QuoteEntity
 import com.sucho.data.usecase.GetKanyeQuoteWithImageUseCase
 import com.sucho.data.usecase.GetQuotesUseCase
 import com.sucho.data.usecase.GetSwansonQuoteUseCase
 import com.sucho.data.usecase.GetWalterWhiteQuoteWithImageUseCase
 import com.sucho.data.usecase.SaveQuoteUseCase
+import com.sucho.data.utils.Constants
 import com.sucho.domain.model.KanyeQuoteWithImage
 import com.sucho.domain.model.SwansonQuoteWithImage
 import com.sucho.domain.model.WalterWhiteQuoteWithImage
 import com.sucho.playground.ui.base.BaseViewModel
+import com.sucho.playground.workmanager.BackgroundQuotesWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -25,6 +32,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
   private val savedStateHandle: SavedStateHandle,
+  private val workManager: WorkManager,
   private val kanyeQuoteWithImageUseCase: GetKanyeQuoteWithImageUseCase,
   private val swansonQuoteUseCase: GetSwansonQuoteUseCase,
   private val walterWhiteQuoteWithImageUseCase: GetWalterWhiteQuoteWithImageUseCase,
@@ -74,6 +82,17 @@ class HomeFragmentViewModel @Inject constructor(
         savedQuotes.addAll(getQuotesUseCase.perform())
       }
     }
+  }
+
+  fun startQuotesWorkManager() {
+    val constraints = Constraints.Builder()
+      .setRequiredNetworkType(CONNECTED)
+      .build()
+    val quotesWorkRequest = OneTimeWorkRequestBuilder<BackgroundQuotesWorker>()
+      .setConstraints(constraints)
+      .build()
+    workManager
+      .enqueueUniqueWork(Constants.QUOTES_WORK_NAME, REPLACE, quotesWorkRequest)
   }
 }
 
