@@ -28,6 +28,7 @@ Day Mode                   |  Night Mode
 - Suspend Functions
 - Kotlin Coroutines
 - Kotlin Flows
+- WorkManager
 
 ### Database
 - Room with Coroutine
