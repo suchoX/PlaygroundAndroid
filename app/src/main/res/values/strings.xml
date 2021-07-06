@@ -2,4 +2,11 @@
     <string name="app_name">Playground</string>
     <string name="quotes_heading">Random Quotes\nthat makes sense</string>
     <string name="placeholder_quote">I want the world to be better! All I want is positive! All I want is dopeness!</string>
+    <string name="cancel">Cancel</string>
+    <string name="quotes_notification_title">Quotes</string>
+    <string name="quotes_notification_downloaded">Quotes downloaded</string>
+
+    <string name="quotes_notification_channel_name">Quotes</string>
+    <string name="quotes_notification_channel_description">Shows Quotes fetched background</string>
+
 </resources>
