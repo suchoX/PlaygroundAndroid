@@ -10,6 +10,8 @@ Day Mode                   |  Night Mode
 
 ## Features as of now
 
+- API calls handled with Kotlin Flows to continually update the Recycler View
+
 ### Architecture
 - Clean Architecture
 - Single Activity with AndroidX Navigation
