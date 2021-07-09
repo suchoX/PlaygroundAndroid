@@ -10,7 +10,11 @@ Day Mode                   |  Night Mode
 
 ## Features as of now
 
-- API calls handled with Kotlin Flows to continually update the Recycler View
+- Well defined Clean architecture with MVVM via Jetpack Components
+- API calls wrapped with Kotlin Flows to continually update the Recycler View
+- Syncing MotionLayout animation with Recyclerview's Item Animation
+- Foreground task with Progress notification using WorkManager
+- 
 
 ### Architecture
 - Clean Architecture
